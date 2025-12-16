@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- SEO dan standar HTML dasar -->
+    <meta charset="UTF-8"> <!-- Wajib -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive -->
+    <meta name="description" content="Portofolio pribadi Dinu Adilah Mutmainnah berisi informasi diri, pengalaman, keahlian, dan proyek web.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Portofolio: Dinu Adilah Mutmainnah">
+    <meta property="og:image" content="personal.jpg">
+
+    <title>Portofolio Dinu</title>
+
+    <!-- Memanggil file CSS eksternal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header aria-label="Bagian Header"> <!-- Semantic + aksesibilitas -->
+    <h1 tabindex="0">Dinu Adilah Mutmainnah</h1> <!-- H1 wajib hanya 1 kali -->
+    <p>Mahasiswa Teknik Informatika | Web Developer Pemula</p>
+</header>
+
+<!-- NAVIGATION -->
+<nav aria-label="Navigasi utama">
+    <a href="#tentang">Tentang</a>
+    <a href="#pendidikan">Riwayat</a>
+    <a href="#keahlian">Keahlian</a>
+    <a href="#proyek">Proyek</a>
+    <a href="#kontak">Kontak</a>
+</nav>
+
+<main>
+
+<!-- SECTION TENTANG -->
+<section id="tentang">
+    <h2>Tentang Saya</h2>
+
+    <!-- Gambar dengan alt meaningful -->
+    <img src="personal.jpg" alt="Foto Dinu Adilah Mutmainnah" />
+
+    <p>
+        Saya adalah mahasiswi Teknik Informatika yang tengah mempelajari web development. 
+        Saya mempraktikkan HTML, CSS, termasuk pemahaman tentang UI
+    </p>
+</section>
+
+<!-- TABEL RIWAYAT -->
+<section id="pendidikan">
+    <h2>Riwayat Pendidikan & Pengalaman</h2>
+
+    <table aria-describedby="ket-tabel">
+        <caption>Riwayat Pendidikan dan Pengalaman</caption>
+
+        <thead>
+            <tr>
+                <th>Tahun</th>
+                <th colspan="2">Keterangan</th> <!-- contoh colspan -->
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td><time datetime="2021">2010 - 2016</time></td>
+                <td>Pendidikan</td>
+                <td>MIS Sukamenak</td>
+            </tr>
+            <tr>
+                <td><time datetime="2021">2016 - 2019</time></td>
+                <td>Pendidikan</td>
+                <td>SMP Fullday School Al-Manshuriyyah</td>
+            </tr>
+            <tr>
+                <td><time datetime="2021">2019 - 2022</time></td>
+                <td>Pendidikan</td>
+                <td>SMK Bhakti Kencana Ciawi</td>
+            </tr>
+             <tr>
+                <td><time datetime="2021">2025 - Sekarang</time></td>
+                <td>Pendidikan</td>
+                <td>Universitas Mayasari Bakti</td>
+            </tr>
+            <tr>
+                <td><time datetime="2024">2021</time></td>
+                <td>Pengalaman</td>
+                <td>Praktik Kerja Lapangan di Puskesmas Sukaresik</td>
+            </tr>
+            <tr>
+                <td><time datetime="2024">2021</time></td>
+                <td>Pengalaman</td>
+                <td>Praktik Kerja Lapangan di Puskesmas Panumbangan</td>
+            </tr>
+            <tr>
+                <td><time datetime="2024">2026</time></td>
+                <td>Pengalaman</td>
+                <td>Project To-Do List App</td> <!-- contoh pengalaman keahlian -->
+            </tr>
+        </tbody>
+
+        <tfoot>
+        </tfoot>
+    </table>
+</section>
+
+<!-- DAFTAR KEAHLIAN -->
+<section id="keahlian">
+    <h2>Keahlian</h2>
+
+    <article>
+        <h3>Keahlian Teknis</h3>
+        <ul>
+            <li>HTML Dasar sampai Accessibility</li>
+            <li>CSS Layouting</li>
+        </ul>
+    </article>
+
+    <aside>
+        <h3>Detail Keahlian</h3>
+        <dl>
+            <dt>HTML</dt>
+            <dd>Struktur halaman, semantic element, form</dd>
+
+            <dt>CSS</dt>
+            <dd>Flexbox, responsive design</dd>
+        </dl>
+    </aside>
+</section>
+
+<!-- PROYEK -->
+<section id="proyek">
+    <h2>Proyek & Karya</h2>
+
+    <article class="highlight">
+        <h3>Website Portofolio</h3>
+        <img src="web_portofolio.jpg" class="project-img" alt="Screenshot tampilan website portofolio">
+        <p>Project web untuk menampilkan data diri dan karya.</p>
+        <a href="https://contoh-portfolio.com" target="_blank">Lihat Proyek</a>
+    </article>
+<br>
+    <article>
+        <h3>Aplikasi To-Do List</h3><!-- contoh proyek keahlian -->
+        <iframe src="https://www.youtube.com/embed/G0jO8kUrg-I?si=0u8mgkXm86lqe76o"
+                title="Demo ToDo List"
+                aria-label="Video demo aplikasi ToDo"></iframe>
+        <p>Aplikasi untuk mencatat kegiatan harian.</p>
+        <a href="https://contoh-todo.com" target="_blank">Lihat Proyek</a>
+    </article>
+<br>
+    <article>
+        <h3>Karya Lain</h3><!-- Contohnya pakai Sertifikat yang ada -->
+        <img src="proyek1.jpg" class="project-img" alt="Screenshot tampilan website portofolio">
+        <p class="pembatas">
+        </p>
+        <img src="proyek2.jpg" class="project-img" alt="Screenshot tampilan website portofolio">
+    </article>
+</section>
+
+<!-- FORM KONTAK -->
+<section id="kontak">
+    <h2>Form Kontak</h2>
+
+    <form aria-labelledby="judul-form">
+        <fieldset>
+            <legend id="judul-form">Hubungi Saya</legend>
+
+            <label>Nama:
+                <input type="text" name="nama" required minlength="3" maxlength="30">
+            </label><br><br>
+
+            <label>Email:
+                <input type="email" name="email" required>
+            </label><br><br>
+
+            <label>No HP:
+                <input type="tel" name="hp" required minlength="10" maxlength="15">
+            </label><br><br>
+
+            <label>Pesan:
+                <textarea name="pesan" required minlength="5" maxlength="200"></textarea>
+            </label><br><br>
+
+            Jenis Kontak: <br>
+            <label><input type="radio" name="jenis" value="saran" required> Saran</label>
+            <label><input type="radio" name="jenis" value="pertanyaan"> Pertanyaan</label><br><br>
+
+            <label>
+                <input type="checkbox" required> Saya menyetujui data saya boleh dihubungi
+            </label><br><br>
+
+            <button type="submit">Kirim</button>
+        </fieldset>
+    </form>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer aria-label="Bagian Footer">
+    <p>© <time datetime="2025">2025</time> Dinu Adilah Mutmainnah</p>
+</footer>
+
+</body>
+</html>
