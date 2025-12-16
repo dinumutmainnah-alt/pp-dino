@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uji Coba Form HTML & CSS Sesuai Modul</title>
+    
+    <style>
+        [cite_start]/* 2.1 SETUP DASAR (RESET) [cite: 160] 
+           Mengatur box-sizing agar padding tidak menambah lebar elemen */
+        * {
+            box-sizing: border-box; [cite_start]/* [cite: 163] */
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif; [cite_start]/* [cite: 180] */
+            background-color: #f5f5f5; [cite_start]/* [cite: 181] */
+            padding: 20px;
+        }
+
+        [cite_start]/* 2.2 FORM CONTAINER [cite: 188] 
+           Kotak putih pembungkus form dengan efek bayangan */
+        .form-container {
+            max-width: 500px; [cite_start]/* [cite: 192] */
+            margin: 40px auto; [cite_start]/* Tengah horizontal [cite: 193] */
+            background: white;
+            padding: 30px;
+            border-radius: 10px; [cite_start]/* Sudut melengkung [cite: 196] */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); [cite_start]/* Efek mengambang [cite: 197] */
+        }
+
+        [cite_start]/* 2.13 RESPONSIVE DESIGN (MOBILE-FIRST) [cite: 412] */
+        @media (min-width: 768px) {
+            .form-container {
+                padding: 30px; [cite_start]/* Tablet [cite: 422] */
+            }
+        }
+        @media (min-width: 1024px) {
+            .form-container {
+                max-width: 600px; [cite_start]/* Desktop [cite: 429] */
+            }
+        }
+
+        [cite_start]/* 2.12 LAYOUT (FORM ROW & GROUP) [cite: 379] 
+           Menggunakan Flexbox untuk mensejajarkan input */
+        .form-row {
+            display: flex;
+            gap: 15px; [cite_start]/* Jarak antar elemen sejajar [cite: 389] */
+            margin-bottom: 20px; /* Jarak antar baris */
+        }
+        
+        /* Agar layout flex berubah jadi tumpuk di layar kecil (tambahan agar responsif) */
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 20px; [cite_start]/* [cite: 385] */
+            flex: 1; [cite_start]/* Bagi rata lebar kolom [cite: 393] */
+        }
+
+        [cite_start]/* 2.3 LABEL STYLING [cite: 208] */
+        .form-label {
+            display: block; [cite_start]/* Turun ke baris baru [cite: 211] */
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        [cite_start]/* 2.4 & 2.7 & 2.8 INPUT, SELECT, TEXTAREA STYLING [cite: 230, 277, 292] */
+        .form-input, .form-select, .form-textarea {
+            width: 100%; [cite_start]/* Lebar penuh [cite: 233] */
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px; [cite_start]/* Mencegah zoom di iOS [cite: 237] */
+        }
+
+        .form-select {
+            background-color: white;
+            cursor: pointer; [cite_start]/* [cite: 290] */
+        }
+
+        .form-textarea {
+            resize: vertical; [cite_start]/* Hanya bisa ubah tinggi [cite: 304] */
+            min-height: 100px;
+        }
+
+        [cite_start]/* 2.5 FOCUS STATE [cite: 244] 
+           Efek saat input diklik */
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #3498db; [cite_start]/* Biru [cite: 249] */
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2); [cite_start]/* Glow biru [cite: 250] */
+        }
+
+        [cite_start]/* 2.6 PLACEHOLDER STYLING [cite: 261] */
+        .form-input::placeholder {
+            color: #999;
+            font-style: italic; [cite_start]/* [cite: 265] */
+        }
+
+        [cite_start]/* 2.11 VALIDATION STYLING [cite: 349] */
+        /* Valid (Hijau) */
+        .form-input:valid {
+            border-color: #2ecc71; [cite_start]/* [cite: 354] */
+        }
+        /* Invalid (Merah) */
+        .form-input:invalid {
+            border-color: #e74c3c; [cite_start]/* [cite: 359] */
+        }
+        
+        [cite_start]/* Pesan Error [cite: 361] */
+        .error-text {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none; [cite_start]/* Sembunyikan default [cite: 366] */
+        }
+        /* Tampilkan error jika input invalid */
+        .form-input:invalid + .error-text {
+            display: block; [cite_start]/* [cite: 369] */
+        }
+
+        [cite_start]/* 2.9 BUTTON STYLING [cite: 312] */
+        .form-button {
+            width: 100%;
+            padding: 14px;
+            background-color: #3498db; [cite_start]/* Warna primary [cite: 317] */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 10px; /* Spasi antar tombol */
+        }
+
+        /* Tombol Reset (Styling tambahan agar beda warna) */
+        .btn-reset {
+            background-color: #95a5a6;
+        }
+
+        [cite_start]/* 2.10 HOVER & ACTIVE STATES [cite: 330] */
+        .form-button:hover {
+            background-color: #2980b9; [cite_start]/* Biru lebih gelap [cite: 336] */
+        }
+        .btn-reset:hover {
+            background-color: #7f8c8d;
+        }
+
+        .form-button:active {
+            transform: translateY(2px); [cite_start]/* Efek tekan [cite: 339] */
+        }
+
+        /* Styling tambahan untuk Radio & Checkbox agar rapi */
+        .radio-group, .checkbox-group {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Pendaftaran Anggota</h2>
+        
+        <form action="#" method="POST">
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nama_depan" class="form-label">Nama Depan:</label>
+                    <input type="text" id="nama_depan" class="form-input" placeholder="Tulis nama depan" required>
+                </div>
+                <div class="form-group">
+                    <label for="nama_belakang" class="form-label">Nama Belakang:</label>
+                    <input type="text" id="nama_belakang" class="form-input" placeholder="Tulis nama belakang" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" class="form-input" placeholder="email@contoh.com" required>
+                <div class="error-text">Mohon masukkan alamat email yang valid (@).</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" id="password" class="form-input" placeholder="Buat password" maxlength="16" required>
+            </div>
+
+            <div class="form-group">
+                <p class="form-label">Jenis Kelamin:</p>
+                <div class="radio-group">
+                    <input type="radio" id="pria" name="gender" value="laki-laki"> <label for="pria">Laki-laki</label>
+                </div>
+                <div class="radio-group">
+                    <input type="radio" id="wanita" name="gender" value="perempuan">
+                    <label for="wanita">Perempuan</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="kota" class="form-label">Kota Asal:</label>
+                <select id="kota" name="kota" class="form-select">
+                    <option value="">-- Pilih Kota --</option>
+                    <option value="jakarta">Jakarta</option>
+                    <option value="bandung">Bandung</option>
+                    <option value="surabaya">Surabaya</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <p class="form-label">Hobi:</p>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="baca" name="hobi" value="membaca">
+                    <label for="baca">Membaca</label> 
+                    
+                    <input type="checkbox" id="olahraga" name="hobi" value="olahraga" style="margin-left: 15px;">
+                    <label for="olahraga">Olahraga</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="umur" class="form-label">Umur:</label>
+                    <input type="number" id="umur" class="form-input" min="17" max="60" step="1"> </div>
+                <div class="form-group">
+                    <label for="lahir" class="form-label">Tanggal Lahir:</label>
+                    <input type="date" id="lahir" class="form-input"> </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="warna" class="form-label">Warna Favorit:</label>
+                    <input type="color" id="warna" class="form-input" value="#3498db" style="height: 50px; padding: 5px;"> </div>
+                <div class="form-group">
+                    <label for="foto" class="form-label">Upload Foto:</label>
+                    <input type="file" id="foto" class="form-input" accept=".jpg, .png"> </div>
+            </div>
+
+            <div class="form-group">
+                <label for="alamat" class="form-label">Alamat Lengkap:</label>
+                <textarea id="alamat" class="form-textarea" placeholder="Tulis alamat lengkap disini..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Status Member (Readonly):</label>
+                <input type="text" class="form-input" value="Anggota Baru (Reguler)" readonly style="background-color: #e9ecef;">
+            </div>
+
+            <button type="submit" class="form-button">Daftar Sekarang</button>
+            <button type="reset" class="form-button btn-reset">Reset Form</button> </form>
+    </div>
+
+</body>
+</html>
