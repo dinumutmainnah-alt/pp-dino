@@ -84,4 +84,18 @@ button:hover {
 video {
     width: 320px;
     margin-top: 10px;
+
 }
+
+.menu-tugas{ 
+ display: flex; 
+gap: 20px;} 
+.cta-button { 
+ background-color: #e74c3 
+color: white; 
+font-weight: bold; 
+
+padding: 8px 15px; 
+border-radius; 5px 
+
+transtition: background-color 0.3s ease; 
